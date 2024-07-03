@@ -1,12 +1,11 @@
 const mongodb = require("mongodb");
-const { get } = require("../routes/admin");
 const MongoClient = mongodb.MongoClient;
 
 let _db;
 
 const mongoConnect = (callback) => {
   MongoClient.connect(
-    "mongodb+srv://chiragsingla1245:1maQ46vmG3Vvx4Up@cluster0.ttzdufu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    "mongodb+srv://chiragsingla1245:1maQ46vmG3Vvx4Up@cluster0.ttzdufu.mongodb.net/shop?retryWrites=true&w=majority&appName=Cluster0"
   )
     .then((client) => {
       console.log("Connected!..");
