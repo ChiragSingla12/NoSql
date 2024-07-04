@@ -18,11 +18,12 @@ exports.postAddProduct = (req, res, next) => {
     imageUrl: imageUrl,
     price: price,
     description: description,
+    // req.user._id = mongoose will store the user id by just writing req.user
+    userId: req.user,
   });
   product
     .save()
     .then((result) => {
-      // console.log(result)
       console.log("product created");
       res.redirect("/admin/products");
     })
@@ -76,6 +77,8 @@ exports.postEditProduct = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
   Product.find()
+    // .select("title price -_id")
+    // .populate("userId", "name")
     .then((products) => {
       res.render("admin/products", {
         prods: products,
